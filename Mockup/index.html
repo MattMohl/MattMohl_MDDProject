@@ -1,21 +1,39 @@
 <DOCTYPE html>
 
 	<head>
-		<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
+		
 	</head>
 
-<html>
+<html data-ng-app>
 <body>
 
-	<div ng-controller="TestController">
+	<div data-ng-controller="TestController">
 
 		<button ng-click="getData()">Try</button>
 
-		<ul ng-model>
-			<li ng-repeat="res in results">{{ res.name }}</li>
+		<ul>
+			<li data-ng-repeat="res in results">{{ res.product.name }}</li>
 		</ul>
 
 	</div>
+
+	<!--
+	<script type="text/javascript">
+
+		function TestController($scope) {
+
+			$scope.results = [
+				{name: 'Matt', type: 'admin'},
+				{name: 'Ben', type: 'user'},
+				{name: 'Jean', type: 'user'}
+			]
+
+		};
+
+	</script>
+	-->
+	
+	<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
 
 	<script type="text/javascript" src="test.js"></script>
 
