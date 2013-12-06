@@ -1,0 +1,23 @@
+<DOCTYPE html>
+
+	<head>
+		<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
+	</head>
+
+<html>
+<body>
+
+	<div ng-controller="TestController">
+
+		<button ng-click="getData()">Try</button>
+
+		<ul ng-model>
+			<li ng-repeat="res in results">{{ res.name }}</li>
+		</ul>
+
+	</div>
+
+	<script type="text/javascript" src="test.js"></script>
+
+</body>
+</html>
