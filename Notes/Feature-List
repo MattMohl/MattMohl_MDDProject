@@ -1,0 +1,15 @@
+The user must be able to enter their phone number
+
+The user must be able to enter a product name and have it save to FireBase
+
+The user must be able to select a product from a list while entering a name
+
+The user must be able to view a list of products they have submitted
+
+The user must be able to edit the names of products they have entered
+
+The user must be able to be sent a text message when a products is reduced price or on sale
+
+The user must be able to choose which companies they search through
+
+The user must be able to disable the tracking of a product temporarily and permanently
