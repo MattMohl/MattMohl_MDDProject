@@ -7,13 +7,13 @@
 <html data-ng-app>
 <body>
 
-	<div data-ng-controller="User">
+	<form name="homeForm" data-ng-controller="User">
 
-		<input class="full first" type="email" placeholder="Email or Username">
+		<input class="full first" ng-model="username" name="user" type="text" placeholder="Username">
 
-		<input class="full" type="text" placeholder="Password">
+		<input class="full" ng-model="password" name="pass" type="text" placeholder="Password">
 
-		<div><input class="half register button" type="submit" value="Register"><input class="half sign button" type="submit" value="Sign In"></div>
+		<div><input ng-click="register(username,password)" class="half register button" type="submit" value="Register"><input class="half sign button" type="submit" value="Sign In"></div>
 
 		<section class="form-controls">
 			<section>
@@ -26,11 +26,13 @@
 			</section>
 		</section>
 
-	</div>
+	</form>
 	
 	<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
 
-	<script type="text/javascript" src="test.js"></script>
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+	<script type="text/javascript" src="js/user.js"></script>
 
 </body>
 </html>
