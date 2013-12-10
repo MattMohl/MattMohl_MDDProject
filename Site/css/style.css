@@ -1,0 +1,111 @@
+
+body {
+	background: url('../assets/background.jpg');
+	min-width: 640px;
+	min-height: 960px;
+	font-family: 'Arial', sans-serif;
+	font-size: 26px;
+}
+
+input {
+	font-size: 34px;
+}
+
+input.button {
+	color: #fff;
+}
+
+input.full {
+	border: 0px;
+	height: 100px;
+	width: 98%;
+	margin: 0 1%;
+	padding: 0 0 0 20px;
+}
+
+input.half {
+	border: 0px;
+	height: 100px;
+	width: 49%;
+}
+
+input.half:first-child {
+	margin: 0 0 0 1%;
+}
+input.half:last-child {
+	margin: 0 1% 0 0;
+}
+
+input.first {
+	border-bottom: 1px solid #000;
+	border-radius: 20px 20px 0 0;
+}
+
+input.register {
+	background-color: #afafaf;
+}
+
+input.sign {
+	background-color: #70C251;
+}
+
+
+
+.form-controls {
+	width: 98%;
+	height: 100px;
+	margin: 20px 1%;
+	border-radius: 20px;
+	background-color: #fff;
+}
+
+.form-controls section {
+	height: 100px;
+	width: 49.9%;
+	float: left;
+}
+
+.form-controls section:first-child {
+	border-right: 1px solid #000;
+}
+
+.form-controls p {
+	width: 200px;
+	margin: 35px 0;
+	float: left;
+}
+
+.form-controls section button {
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin: 9px;
+	border-radius: 20px;
+	border: 1px solid #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
