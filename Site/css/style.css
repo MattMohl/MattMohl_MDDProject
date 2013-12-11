@@ -7,8 +7,20 @@ body {
 	font-size: 26px;
 }
 
+button {
+	padding: 0;
+}
+span {
+	display: block;
+}
+
 input {
 	font-size: 34px;
+	padding: 0;
+}
+
+input:active {
+	padding:0;
 }
 
 input.button {
@@ -27,6 +39,7 @@ input.half {
 	border: 0px;
 	height: 100px;
 	width: 49%;
+	float: left;
 }
 
 input.half:first-child {
@@ -41,12 +54,20 @@ input.first {
 	border-radius: 20px 20px 0 0;
 }
 
-input.register {
-	background-color: #afafaf;
+input:focus {
+	transition: box-shadow .2s;
+	box-shadow: 0 0 8px 8px rgba(73,206,255,.7) inset;
+	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
 }
 
-input.sign {
-	background-color: #70C251;
+input.register 			{background-color: #afafaf; transition: background-color .1s;}
+input.register:active 	{background-color: #797979;}
+
+input.sign 			{background-color: #70C251; transition: background-color .1s;}
+input.sign:active 	{background-color: #3a851e;}
+
+.homeForm div input {
+	float: left;
 }
 
 
@@ -75,13 +96,19 @@ input.sign {
 	float: left;
 }
 
-.form-controls section button {
+.form-controls section span {
 	width: 80px;
 	height: 80px;
 	float: left;
 	margin: 9px;
-	border-radius: 20px;
-	border: 1px solid #000;
+	border-radius: 15px;
+	border: 1px solid rgba(0,0,0,.4);
+}
+
+.form-controls section span:active {
+	transition: box-shadow .1s, border .1s;
+	box-shadow: 0 0 8px 8px rgba(73,206,255,.7) inset;
+	border: 1px solid rgba(73,206,255,.7);
 }
 
 

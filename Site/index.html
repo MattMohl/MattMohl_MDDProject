@@ -4,24 +4,30 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 
-<html data-ng-app>
+<html ng-app>
 <body>
 
-	<form name="homeForm" data-ng-controller="User">
+	<form name="homeForm" ng-controller="User">
 
-		<input class="full first" ng-model="username" name="user" type="text" placeholder="Username">
+		<input class="full first" ng-model="userForm.user" name="user" type="text" placeholder="Username" ng-required="{string}">
 
-		<input class="full" ng-model="password" name="pass" type="text" placeholder="Password">
+		<input class="full" ng-model="userForm.pass" name="pass" type="text" placeholder="Password" ng-required="{string}">
 
-		<div><input ng-click="register(username,password)" class="half register button" type="submit" value="Register"><input class="half sign button" type="submit" value="Sign In"></div>
+		<div>
+			<input ng-click="register()" class="half register button" type="submit" value="Register">
+
+			<input ng-click="login()" class="half sign button" type="submit" value="Sign In">
+		</div>
+
+		<div style="clear: both"></div>
 
 		<section class="form-controls">
 			<section>
-				<button></button>
+				<span></span>
 				<p>Show Password</p>
 			</section>
 			<section>
-				<button></button>
+				<span></span>
 				<p>Agree to <a href="#">Terms</a></p>
 			</section>
 		</section>
@@ -31,6 +37,10 @@
 	<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
 
 	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase-simple-login.js'></script>
+
+	<script type="text/javascript" src="js/saleAssistant.js"></script>
 
 	<script type="text/javascript" src="js/user.js"></script>
 
