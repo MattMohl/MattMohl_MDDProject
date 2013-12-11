@@ -7,9 +7,6 @@ body {
 	font-size: 26px;
 }
 
-button {
-	padding: 0;
-}
 span {
 	display: block;
 }
@@ -109,6 +106,34 @@ input.sign:active 	{background-color: #3a851e;}
 	transition: box-shadow .1s, border .1s;
 	box-shadow: 0 0 8px 8px rgba(73,206,255,.7) inset;
 	border: 1px solid rgba(73,206,255,.7);
+}
+
+
+
+button {
+	margin: 0 1%;
+	width: 50%;
+	height: 70px;
+	float: right;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px;
+	color: #fff;
+	background-color: rgba(255,255,255,.15);
+	font-size: 34px;
+}
+button:active {
+	transition: background-color .15;
+	background-color: rgba(100,100,100,1);
+}
+
+.productList {
+	margin: 0;
+	padding: 0;
+	width: 98%;
+	margin: 10px 1%;
+	min-height: 600px;
+	background-color: #fff;
 }
 
 
