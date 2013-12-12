@@ -1,13 +1,13 @@
 <form name="homeForm">
 
-	<input class="full first" ng-model="user" name="user" type="text" placeholder="Username">
+	<input class="full first" ng-model="userInfo.email" name="user" type="text" placeholder="Username">
 
-	<input class="full" ng-model="pass" name="pass" type="text" placeholder="Password">
+	<input class="full" ng-model="userInfo.password" name="pass" type="text" placeholder="Password">
 
 	<div>
-		<input ng-click="register(user, pass)" class="half register button" type="submit" value="Register">
+		<input ng-click="auth.$createUser(userInfo.email, userInfo.password)" class="half register button" type="submit" value="Register">
 
-		<input ng-click="signin(user, pass)" class="half sign button" type="submit" value="Sign In">
+		<input ng-click="auth.$login('password', userInfo)" class="half sign button" type="submit" value="Sign In">
 	</div>
 
 	<div style="clear: both"></div>
@@ -22,5 +22,7 @@
 			<p>Agree to <a href="#">Terms</a></p>
 		</section>
 	</section>
+
+	<button ng-click="auth.$logout()">Logout</button>
 
 </form>

@@ -27,10 +27,11 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 // 	console.log('done');
 // }]);
 
-saleAssistant.controller('user', function($rootScope, $scope) {
+saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth) {
 	console.log('got it');
 
-	var userRef = new Firebase('http://mdd-project.firebaseio.com/users')
+	var userRef = new Firebase('http://mdd-project.firebaseio.com/users');
+	$scope.auth = $firebaseAuth(userRef);
 	var auth = new FirebaseSimpleLogin(userRef, function(error, user) {
 	  if (error) {
 	    // an error occurred while attempting login
@@ -42,23 +43,5 @@ saleAssistant.controller('user', function($rootScope, $scope) {
 	    // user is logged out
 	  }
 	});
-
-	$scope.register = function($email, $pass) {
-		console.log($email, $pass);
-		auth.createUser($email, $pass, function(error, user) {
-			if(!error) {
-				console.log('registered');
-			}else {
-				console.log('error on register');
-			}
-		});
-	};
-
-	$scope.signin = function($email, $pass) {
-		auth.login('password', {
-			email: $email,
-			password: $pass
-		});
-	};
 });
 
