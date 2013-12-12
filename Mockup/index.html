@@ -1,37 +1,31 @@
 <DOCTYPE html>
 
 	<head>
-		
+		<style type="text/css">
+			li {
+				float: left;
+			}
+		</style>
 	</head>
 
-<html data-ng-app>
+<html ng-app="testApp">
 <body>
 
-	<div data-ng-controller="TestController">
+	<div ng-controller="TestController">
 
-		<button ng-click="getData()">Try</button>
+		<input ng-model="query" type="text" value="PlayStation">
+
+		<button ng-click="getData(query, 1)">Search</button>
 
 		<ul>
-			<li data-ng-repeat="res in results">{{ res.product.name }}</li>
+			<li data-ng-repeat="res in results">{{ res.name }}</li>
+		</ul>
+
+		<ul>
+			<li ng-repeat="page in pages"><button ng-click="getData(query, page)">{{ page }}</button></li>
 		</ul>
 
 	</div>
-
-	<!--
-	<script type="text/javascript">
-
-		function TestController($scope) {
-
-			$scope.results = [
-				{name: 'Matt', type: 'admin'},
-				{name: 'Ben', type: 'user'},
-				{name: 'Jean', type: 'user'}
-			]
-
-		};
-
-	</script>
-	-->
 	
 	<script src="http://code.angularjs.org/1.2.4/angular.min.js"></script>
 
