@@ -2,15 +2,17 @@
 var userRef = {};
 
 // var User = function User($scope, $http) {
-saleAssistant.controller('user',['$rootScope', '$scope', function($rootScope,$scope) {
+saleAssistant.controller('user', function($rootScope,$scope) {
+
+	console.log('got it');
 
 	$scope.register = function() {
 		console.log(userForm.pass, userForm.pass);
-		if($user != '' && $pass != '') {
-			userRef = new Firebase('https://mdd-project.firebaseio.com/users/'+$user);
-			userRef.child('password').set($pass);
-			userRef.child('type').set('user');
-		}
+		// if($user != '' && $pass != '') {
+		// 	userRef = new Firebase('https://mdd-project.firebaseio.com/users/'+$user);
+		// 	userRef.child('password').set($pass);
+		// 	userRef.child('type').set('user');
+		// }
 	};
 
 	$scope.login = function() {
@@ -30,4 +32,4 @@ saleAssistant.controller('user',['$rootScope', '$scope', function($rootScope,$sc
 	};
 
 // };
-}])
+});
