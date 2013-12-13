@@ -11,7 +11,7 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'views/home.html'
 		})
 		.when('/list', {
-			controller: 'user',
+			controller: 'product',
 			templateUrl: 'views/list.html'
 		})
 		.when('/search', {
@@ -30,6 +30,7 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', function($rootSco
 	$rootScope.page = 1;
 	$rootScope.query = '';
 	$rootScope.results = [];
+	$rootScope.products = [];
 
 	console.log('done');
 }]);
@@ -75,8 +76,10 @@ saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth, $lo
 // CONTROLLER :: product
 // 
 
-saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location) {
+saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase) {
 	console.log('controller: product');
+
+	$rootScope.products = $firebase(new Firebase('https://mdd-project.firebaseio.com/products'));
 
 	$scope.results = [];
 
@@ -104,6 +107,11 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 	$scope.nextPage = function() {
 		$rootScope.page++;
 		$scope.getProducts($rootScope.query);
+	};
+
+	$scope.addProduct = function($name) {
+		console.log($rootScope.user);
+		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name});
 	};
 
 });
