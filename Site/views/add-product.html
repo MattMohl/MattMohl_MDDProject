@@ -5,12 +5,12 @@
 	<input class="full" ng-model="query" name="query" type="text" placeholder="Product Name">
 
 	<div>
-		<input ng-click="getProducts(query, 1)" class="register button full" type="submit" value="Search">
+		<input ng-click="getProducts(query)" class="register button full" type="submit" value="Search">
 	</div>
 
-	<ul ng-repeat="res in results" class="searchList">
-		<li>content</li>
-		<li ng-click="addProduct(res.name)">{{ res.name }}</li>
+	<ul class="searchList">
+		<li ng-repeat="res in results" ng-click="addProduct(res.name)"><div>{{ res.name }}</div></li>
+		<li ng-click="nextPage()"><div>Next Page</div></li>
 	</ul>
 
 	<a href="/MattMohl_MDDProject/Site/index.html#/list">Back</a>

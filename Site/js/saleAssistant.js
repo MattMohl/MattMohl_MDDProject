@@ -27,11 +27,19 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', function($rootScope, $firebaseAuth, $firebase) {
 	$rootScope.user = {};
 
+	$rootScope.page = 1;
+	$rootScope.query = '';
+	$rootScope.results = [];
+
 	console.log('done');
 }]);
 
+
+// CONTROLLER :: user
+// Controls all user data
+
 saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth, $location) {
-	console.log('got it');
+	console.log('controller: user');
 
 	$rootScope.$on("$firebaseAuth:login", function(e, user) {
 		console.log("User " + user.id + " successfully logged in!");
@@ -61,6 +69,43 @@ saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth, $lo
 	    // user is logged out
 	  }
 	});
+});
+
+
+// CONTROLLER :: product
+// 
+
+saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location) {
+	console.log('controller: product');
+
+	$scope.results = [];
+
+	$scope.getProducts = function($query) {
+		$rootScope.query = $query;
+		$http.jsonp( 'http://api.remix.bestbuy.com/v1/products(search='+$rootScope.query+')?page='+$rootScope.page+'&format=json&callback=JSON_CALLBACK&apiKey=kqwq2utctj7tpjur4jgq36k2')
+		.success(function(data, status, headers, config) {
+			// console.log('success: ', data);
+			// console.log(data);
+			// console.log(data.products);
+			for(var i=0; i<(data.to-data.from)+1; i++) {
+				$scope.results.push(data.products[i]);
+			}
+			// $scope.results.push(data.products);
+			$rootScope.pages = [];
+			for (var i=1; i<data.totalPages; i++) {
+				$rootScope.pages.push(i);
+			}
+		})
+		.error(function(data, status, headers, config) {
+			console.log('fail: ', data);
+		});
+	};
+
+	$scope.nextPage = function() {
+		$rootScope.page++;
+		$scope.getProducts($rootScope.query);
+	};
+
 });
 
 

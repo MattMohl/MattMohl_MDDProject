@@ -158,7 +158,8 @@ button:active {
 	background-color: #fff;
 }
 
-.productList li {
+.productList li,
+.searchList li {
 	height: 70px;
 	border-bottom: 1px solid #000;
 	cursor: default;
@@ -206,6 +207,12 @@ button:active {
 	min-height: 600px;
 	border-radius: 20px;
 	background-color: #fff;
+	overflow: hidden;
+}
+
+.searchList li div {
+	height: 30px;
+	padding: 20px 0 0 20px;
 }
 
 
