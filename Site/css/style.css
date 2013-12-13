@@ -1,5 +1,7 @@
 
 body {
+	margin: 0;
+	padding: 0;
 	background: url('../assets/background.jpg');
 	min-width: 640px;
 	min-height: 960px;
@@ -7,9 +9,19 @@ body {
 	font-size: 26px;
 }
 
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 a 			{ color: #fff; }
 a:active 	{ color: #eee; }
 a:visited	{ color: #fff; }
+
+h1 {
+	width: 98%;
+	margin: 20px 1%;
+}
 
 li {
 	list-style-type: none;
@@ -184,6 +196,16 @@ button:active {
 .productList li div.Sale {
 	color: #70C251;
 	background-color: #D4FFC2;
+}
+
+
+
+.searchList {
+	width: 98%;
+	margin: 20px 1%;
+	min-height: 600px;
+	border-radius: 20px;
+	background-color: #fff;
 }
 
 

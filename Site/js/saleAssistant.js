@@ -14,6 +14,10 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			controller: 'user',
 			templateUrl: 'views/list.html'
 		})
+		.when('/search', {
+			controller: 'product',
+			templateUrl: 'views/add-product.html'
+		})
 		.otherwise({redirectTo: '/'});
 
 		// $locationProvider.html5Mode(true);
@@ -50,9 +54,33 @@ saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth, $lo
 	    console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
 	    $rootScope.user = user;
 	    console.log($rootScope.user);
+	    if($rootScope.user) {
+	    	$location.path('/list');
+	    }
 	  } else {
 	    // user is logged out
 	  }
 	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

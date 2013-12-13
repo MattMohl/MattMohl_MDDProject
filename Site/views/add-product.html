@@ -1,0 +1,18 @@
+<form>
+
+	<h1>Add Product</h1>
+
+	<input class="full" ng-model="query" name="query" type="text" placeholder="Product Name">
+
+	<div>
+		<input ng-click="getProducts(query, 1)" class="register button full" type="submit" value="Search">
+	</div>
+
+	<ul ng-repeat="res in results" class="searchList">
+		<li>content</li>
+		<li ng-click="addProduct(res.name)">{{ res.name }}</li>
+	</ul>
+
+	<a href="/MattMohl_MDDProject/Site/index.html#/list">Back</a>
+
+</form>
