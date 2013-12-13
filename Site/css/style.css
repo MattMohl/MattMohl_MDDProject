@@ -7,6 +7,14 @@ body {
 	font-size: 26px;
 }
 
+a 			{ color: #fff; }
+a:active 	{ color: #eee; }
+a:visited	{ color: #fff; }
+
+li {
+	list-style-type: none;
+}
+
 span {
 	display: block;
 }
@@ -57,8 +65,10 @@ input:focus {
 	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
 }
 
-input.register 			{background-color: #afafaf; transition: background-color .1s;}
-input.register:active 	{background-color: #797979;}
+input.register,
+.productList li a 			{background-color: #afafaf; transition: background-color .1s;}
+input.register:active,
+.productList li a:active 	{background-color: #797979;}
 
 input.sign 			{background-color: #70C251; transition: background-color .1s;}
 input.sign:active 	{background-color: #3a851e;}
@@ -138,23 +148,42 @@ button:active {
 
 .productList li {
 	height: 70px;
+	border-bottom: 1px solid #000;
+	cursor: default;
+}
+.productList li:hover {
+	background-color: #eee;
+}
+.productList li:active {
+	background-color: #ddd;
 }
 
 .productList li div,
 .productList li a {
+	height: 30px;
 	width: 33%;
-	margin: 20px 0;
+	padding: 20px 0;
 	float: right;
 	font-size: 30px;
 	text-align: center;
 }
 
-.productList li div:first-child {
-	border-right: 1px solid #000;
+.productList li a {
+	text-decoration: none;
 }
 
-.productList li div:nth-child(2) {
-	
+.productList li div:last-child {
+	border-right: 1px solid #000;
+	border-right-style: dotted;
+}
+
+.productList li div.Watching {
+	color: #FF7400;
+	background-color: #FFEEC0;
+}
+.productList li div.Sale {
+	color: #70C251;
+	background-color: #D4FFC2;
 }
 
 
