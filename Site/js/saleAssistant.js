@@ -3,11 +3,9 @@ var saleAssistant = angular.module('saleAssistant', ['ngRoute', 'firebase']);
 saleAssistant.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
-			controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/index.html', {
-			controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/list', {
@@ -19,12 +17,10 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'views/add-product.html'
 		})
 		.otherwise({redirectTo: '/'});
-
-		// $locationProvider.html5Mode(true);
 });
 
 // Resources
-saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', function($rootScope, $firebaseAuth, $firebase) {
+saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', function($rootScope, $firebaseAuth, $firebase, $location) {
 	$rootScope.user = {};
 
 	$rootScope.page = 1;
@@ -32,52 +28,52 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', function($rootSco
 	$rootScope.results = [];
 	$rootScope.products = [];
 
-	console.log('done');
-}]);
+	var userRef = new Firebase('https://mdd-project.firebaseio.com');
+	$rootScope.auth = $firebaseAuth(userRef);
+	// var auth = new FirebaseSimpleLogin(userRef, function(error, user) {
+	// 	if(error) {
+	// 		console.log('error on login: ', error);
+	// 		$location.path('/');
+	// 	}else if(user) {
+	// 		console.log('user: ', user.email, 'provider: ', user.provider);
+	// 		$rootScope.user = user;
+	// 		$location.path('/list');
+	// 	}else {
+	// 		console.log('user is logged out');
+	// 		$location.path('/');
+	// 	}
+	// });
 
-
-// CONTROLLER :: user
-// Controls all user data
-
-saleAssistant.controller('user', function($rootScope, $scope, $firebaseAuth, $location) {
-	console.log('controller: user');
-
+	// On login goto -> /list
 	$rootScope.$on("$firebaseAuth:login", function(e, user) {
 		console.log("User " + user.id + " successfully logged in!");
+		$rootScope.user = user;
 		$location.path('/list');
 	});
 
+	// On logout goto -> /
 	$rootScope.$on("$firebaseAuth:logout", function(e, user) {
 		console.log('logging out current user: ' + $rootScope.user);
+		$rootScope.user = {};
 		$location.path('/');
 	});	
 
-	var userRef = new Firebase('https://mdd-project.firebaseio.com');
-	$rootScope.auth = $firebaseAuth(userRef);
-	var auth = new FirebaseSimpleLogin(userRef, function(error, user) {
-	  if (error) {
-	    // an error occurred while attempting login
-	    console.log(error);
-	  } else if (user) {
-	    // user authenticated with Firebase
-	    console.log('User ID: ' + user.id + ', Provider: ' + user.provider);
-	    $rootScope.user = user;
-	    console.log($rootScope.user);
-	    if($rootScope.user) {
-	    	$location.path('/list');
-	    }
-	  } else {
-	    // user is logged out
-	  }
-	});
-});
+	$rootScope.ultimateCheck = function() {
+		if(!$rootScope.user.id) {
+			console.log('hell no bitch');
+			$location.path('/');
+		}
+	};
+}]);
 
 
 // CONTROLLER :: product
-// 
+// handles CRUD
 
 saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase) {
 	console.log('controller: product');
+
+	$rootScope.ultimateCheck();
 
 	$rootScope.products = $firebase(new Firebase('https://mdd-project.firebaseio.com/products'));
 
@@ -93,7 +89,6 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 			for(var i=0; i<(data.to-data.from)+1; i++) {
 				$scope.results.push(data.products[i]);
 			}
-			// $scope.results.push(data.products);
 			$rootScope.pages = [];
 			for (var i=1; i<data.totalPages; i++) {
 				$rootScope.pages.push(i);
@@ -112,6 +107,7 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 	$scope.addProduct = function($name) {
 		console.log($rootScope.user);
 		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name});
+		$location.path('/list');
 	};
 
 });
