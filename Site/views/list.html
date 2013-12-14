@@ -5,7 +5,11 @@
 	<div style="clear:both;"></div>
 
 	<ul class="productList">
-		
+		<li ng-repeat="prod in products | toArray | filter:{userid: user.id}">
+			<a href="">Edit</a>
+			<div class="{{ prod.status }}">{{ prod.status }}</div>
+			<div>{{ prod.pname }}</div>
+		</li>
 	</ul>
 
 	<button ng-click="auth.$logout()">Logout</button>

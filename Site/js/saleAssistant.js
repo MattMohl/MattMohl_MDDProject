@@ -19,6 +19,20 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 		.otherwise({redirectTo: '/'});
 });
 
+saleAssistant.filter('toArray', function () {
+	'use strict';
+	 
+	return function (obj) {
+		if (!(obj instanceof Object)) {
+			return obj;
+		}
+	 
+		return Object.keys(obj).filter(function(key){if(key.charAt(0) !== "$") {return key;}}).map(function (key) {
+		return Object.defineProperty(obj[key], '$key', {__proto__: null, value: key});
+		});
+	};
+});
+
 // Resources
 saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', function($rootScope, $firebaseAuth, $firebase, $location) {
 	$rootScope.user = {};
@@ -30,19 +44,6 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 
 	var userRef = new Firebase('https://mdd-project.firebaseio.com');
 	$rootScope.auth = $firebaseAuth(userRef);
-	// var auth = new FirebaseSimpleLogin(userRef, function(error, user) {
-	// 	if(error) {
-	// 		console.log('error on login: ', error);
-	// 		$location.path('/');
-	// 	}else if(user) {
-	// 		console.log('user: ', user.email, 'provider: ', user.provider);
-	// 		$rootScope.user = user;
-	// 		$location.path('/list');
-	// 	}else {
-	// 		console.log('user is logged out');
-	// 		$location.path('/');
-	// 	}
-	// });
 
 	// On login goto -> /list
 	$rootScope.$on("$firebaseAuth:login", function(e, user) {
@@ -70,12 +71,14 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 // CONTROLLER :: product
 // handles CRUD
 
-saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase) {
+saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase, filterFilter) {
 	console.log('controller: product');
 
 	$rootScope.ultimateCheck();
 
 	$rootScope.products = $firebase(new Firebase('https://mdd-project.firebaseio.com/products'));
+
+	// $rootScope.userProducts = filterFilter($rootScope.products, $rootScope.user.id)
 
 	$scope.results = [];
 
@@ -106,7 +109,7 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 
 	$scope.addProduct = function($name) {
 		console.log($rootScope.user);
-		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name});
+		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name, 'status':'Watching'});
 		$location.path('/list');
 	};
 
