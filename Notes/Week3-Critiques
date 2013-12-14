@@ -1,0 +1,54 @@
+// ====================================================
+Developer Name:     	Michael Fleming
+Project Github URL:     https://github.com/mfleming7024/wingaminglounge
+Project Pivotal URL:    https://www.pivotaltracker.com/s/projects/969626
+
+Reviewed by:         	Matt Mohl
+Assignment:         	X.2
+
+Rubric
+	https://docs.google.com/spreadsheet/ccc?key=0AtXddmdg0lFVdEFieko3Zl95MENGaTBFMWpXQndDWXc#gid=0
+
+Previous:
+
+1. Branding needs work. Drop Shadows are too strong. They need to be less intense. A little goes a long way is what Gus would say. Blue border (line) below main image is too thick and needs a lighter color to make itself more effective. Look at the border lines between stories on Pivotal Tracker as an example.
+2. Userflow needs some improvements. Try changing the main image when the page changes.
+3. MVC looks good
+4. There is a jquery script in your vender file.
+5. Lots of bloated JS files. Need to consider optimization!
+
+Critique
+
+1. More comments would be a good idea.
+
+2. The code looks great to me, otherwise, as well as the design. I can't test due to a localhost problem, but the main page looks good, with the facebook login.
+
+
+
+
+// ====================================================
+Developer Name:     	Erwin Angeles
+Project Github URL:     https://github.com/mfleming7024/wingaminglounge
+Project Pivotal URL:    https://www.pivotaltracker.com/s/projects/969626
+
+Reviewed by:         	Matt Mohl
+Assignment:         	X.2
+
+Rubric
+	https://docs.google.com/spreadsheet/ccc?key=0AtXddmdg0lFVdExrRm9jUkxGbkViQjdsczdvNmxFcnc#gid=0
+
+Previous:
+
+	1. The login doesn't track user types for admin or others.
+    2. File structure can still be cleaned up a lot check out (http://stackoverflow.com/questions/18542353/angularjs-folder-structure)
+    3. Add some extra padding for the bottom of the logo when shrunk down to mobile.
+
+
+Critique
+
+1. Great designing, I wish I could see the rest of the site!
+	- My localhost breaks your code for some reason, so I'll just critique the homepage
+
+2. I would put some more padding on the text when on lower resolutions
+
+3. Also, I would make the hovers making the nav work on-clicks if at all possible
