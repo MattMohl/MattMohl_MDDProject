@@ -13,3 +13,7 @@ The user must be able to be sent a text message when a products is reduced price
 The user must be able to choose which companies they search through
 
 The user must be able to disable the tracking of a product temporarily and permanently
+
+
+
+I need to be use Zapier and Twilio as well as php scripts to check API's and send messages

@@ -1,0 +1,44 @@
+<DOCTYPE html>
+
+	<head>
+		
+	</head>
+
+<html ng-app="geoApp">
+<body ng-controller="locator">
+
+	<h1>diveintohtml.com/#1/geolocation</h1>
+
+	<h1>html5love.com/#1/geolocation</h1>
+
+	<ul>
+		<li ng-repeat="location in locations">{{ location.latitude }} - {{ location.longitude }} :: {{ location.accuracy }}</li>
+	</ul>
+
+	<ul>
+		<li ng-repeat="loc in myLocation">{{ loc.latitude }}</li>
+	</ul>
+
+	<strong ng-repeat="location in locations"></strong>
+
+	<script type='text/javascript' src='https://cdn.firebase.com/v0/firebase.js'></script>
+	
+	<script src="http://code.angularjs.org/1.2.4/angular.js"></script>
+
+	<script src="https://cdn.firebase.com/libs/angularfire/0.5.0-rc1/angularfire.js"></script>
+
+	<script type="text/javascript">
+		var geoApp = angular.module('geoApp', ['firebase']);
+
+		geoApp.controller('locator', function($scope, $firebase) {
+			$scope.locations = $firebase(new Firebase('https://chapman.firebaseio.com/currentLoc'));
+
+			$scope.myLocation = navigator.geolocation.getCurrentPosition(function(position) {
+				console.log(position.coords);
+				$scope.myLocation = position.coords;
+			});
+		});
+	</script>
+
+</body>
+</html>

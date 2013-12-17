@@ -1,0 +1,27 @@
+PHP :: cron
+
+I'll need to use what is known as a 'cron job' to execute my background api calls as well as sms communication. I found a great article about this at:
+
+	http://www.sitepoint.com/introducing-cron/
+
+	and here
+
+	https://help.ubuntu.com/community/CronHowto
+
+
+
+cron syntax:
+
+	1. Open a new cron file like this -> crontab -e
+
+	2. Then, write a command to run a certain file like this -> 
+
+		* 2 * * * /localhost/Site/php/script.php
+
+	with the syntax
+
+		[minutes] [hours] [date] [month] [day] "command"
+
+
+
+
