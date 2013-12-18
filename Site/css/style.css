@@ -6,8 +6,11 @@ body {
 	background-color: #9d2b3e;
 	min-width: 640px;
 	min-height: 960px;
-	font-family: 'Arial', sans-serif;
+	font-family: 'Varela Round', sans-serif;
 	font-size: 26px;
+}
+input, button {
+	font-family: 'Varela Round';
 }
 
 ul {
@@ -34,64 +37,6 @@ li {
 
 span {
 	display: block;
-}
-
-input {
-	font-size: 34px;
-	padding: 0;
-}
-
-input:active {
-	padding:0;
-}
-
-input.button {
-	color: #fff;
-}
-
-input.full {
-	border: 0px;
-	height: 100px;
-	width: 98%;
-	margin: 0 1%;
-	padding: 0 0 0 20px;
-}
-
-input.half {
-	border: 0px;
-	height: 100px;
-	width: 49%;
-	float: left;
-}
-
-input.half:first-child {
-	margin: 0 0 0 1%;
-}
-input.half:last-child {
-	margin: 0 1% 0 0;
-}
-
-input.first {
-	border-bottom: 1px solid #000;
-	border-radius: 20px 20px 0 0;
-}
-
-input:focus {
-	transition: box-shadow .2s;
-	box-shadow: 0 0 8px 8px rgba(73,206,255,.7) inset;
-	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
-}
-
-input.register,
-.productList li a 			{background-color: #afafaf; transition: background-color .1s;}
-input.register:active,
-.productList li a:active 	{background-color: #797979;}
-
-input.sign 			{background-color: #70C251; transition: background-color .1s;}
-input.sign:active 	{background-color: #3a851e;}
-
-.homeForm div input {
-	float: left;
 }
 
 
@@ -127,47 +72,90 @@ h1 {
 
 
 
-.homeForm {
-	margin: 20px 0;
+
+
+
+input {
+	font-size: 34px;
+	padding: 0;
 }
+
+input:active {
+	padding: 0;
+}
+
+input.button {
+	color: #fff;
+}
+
+input.full {
+	border: 0px;
+	height: 100px;
+	width: 100%;
+	padding: 0 0 0 4%;
+}
+
+input.half {
+	border: 0px;
+	height: 100px;
+	width: 50%;
+	float: left;
+}
+
+input.first {
+	border-bottom: 1px solid #000;
+}
+
+input.text {
+	background-color: rgba(0,0,0,0);
+}
+
+input.text:focus {
+	transition: background-color .4s, color .6s;
+	background-color: rgba(255,255,255, .08);
+	color: #fff;
+	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
+}
+
+input.register,
+.productList li a,
+.form-controls li  			{background-color: rgba(0,0,0,.1); transition: background-color .4s;}
+
+input.register:hover,
+.productList li:hover,
+.form-controls li:hover 	{background-color: rgba(255,255,255,.2); transition: background-color .4s;}
+
+input.register:active,
+.productList li a:active 	{background-color: #797979;}
+
+input.sign 					{background-color: rgba(112,194,81,.7); transition: background-color .4s;}
+input.sign:hover			{background-color: rgba(112,194,81,1);}
+
+input.sign:active,
+.form-controls li:active,
+.form-controls li.selected:active 	{background-color: rgba(58,133,30,1);}
+
+
+.homeForm div input {
+	float: left;
+}
+
 
 .form-controls {
-	width: 98%;
-	height: 100px;
-	margin: 20px 1%;
-	border-radius: 20px;
-	background-color: #fff;
+	width: 100%;
+	margin-top: 20px;
 }
 
-.form-controls section {
-	height: 100px;
-	width: 49.9%;
-	float: left;
+.form-controls li {
+	height: 30px;
+	padding: 35px 30px;
 }
 
-.form-controls section:first-child {
-	border-right: 1px solid #000;
-}
-
-.form-controls p {
-	width: 200px;
-	margin: 35px 0;
-	float: left;
-}
-
-.form-controls section span {
-	width: 80px;
-	height: 80px;
-	float: left;
-	margin: 9px;
-	border-radius: 15px;
-	border: 1px solid rgba(0,0,0,.4);
-}
-
-.form-controls section span:active {
-	transition: box-shadow .1s, border .1s;
-	box-shadow: 0 0 8px 8px rgba(73,206,255,.7) inset;
-	border: 1px solid rgba(73,206,255,.7);
+.form-controls li.selected {
+	transition: background-color .4s;
+	background-color: rgba(112,194,81,.7);
+	list-style-type: url('../assets/checkmark.png');
+	list-style-position: inside;
 }
 
 
@@ -176,7 +164,6 @@ button {
 	margin: 0 1%;
 	width: 50%;
 	height: 70px;
-	float: right;
 	border: 0;
 	border-radius: 5px;
 	padding: 10px;
@@ -189,13 +176,15 @@ button:active {
 	background-color: rgba(100,100,100,1);
 }
 
+
+
+
 .productList {
 	margin: 0;
 	padding: 0;
-	width: 98%;
-	margin: 10px 1%;
+	width: 100%;
+	margin: 10px 0;
 	min-height: 600px;
-	background-color: #fff;
 }
 
 .productList li,
@@ -204,30 +193,33 @@ button:active {
 	border-bottom: 1px solid #000;
 	cursor: default;
 }
-.productList li:hover {
-	background-color: #eee;
-}
-.productList li:active {
-	background-color: #ddd;
-}
+.productList li:hover 		{ background-color: rgba(255,255,255,.2); }
+.productList li:active 		{ background-color: rgba(255,255,255,.4); }
 
 .productList li div,
 .productList li a {
 	height: 30px;
-	width: 33%;
 	padding: 20px 0;
 	float: right;
 	font-size: 30px;
 	text-align: center;
 }
 
+.productList li div {
+	width: 66%;
+	line-height: 30px;
+	overflow: hidden;
+}
 .productList li a {
+	width: 33%;
 	text-decoration: none;
 }
 
-.productList li div:last-child {
-	border-right: 1px solid #000;
-	border-right-style: dotted;
+.productList li a.Watching {
+	background-color: rgba(255,116,0,.3);
+}
+.productList li a.Sale {
+	background-color: rgba(112,194,81,.7);
 }
 
 .productList li div.Watching {

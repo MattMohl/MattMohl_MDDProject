@@ -6,8 +6,7 @@
 
 	<ul class="productList">
 		<li ng-repeat="prod in products | toArray | filter:{userid: user.id}">
-			<a href="">Edit</a>
-			<div class="{{ prod.status }}">{{ prod.status }}</div>
+			<a href="/MattMohl_MDDProject/Site/index.html#/edit/{{prod.pname}}" class="{{ prod.status }}">Edit</a>
 			<div>{{ prod.pname }}</div>
 		</li>
 	</ul>
