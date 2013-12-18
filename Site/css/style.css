@@ -179,11 +179,12 @@ button:active {
 
 
 
-.productList {
+.productList,
+.searchList {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	margin: 10px 0;
+	margin: 20px 0;
 	min-height: 600px;
 }
 
@@ -192,9 +193,12 @@ button:active {
 	height: 70px;
 	border-bottom: 1px solid #000;
 	cursor: default;
+	overflow: hidden;
 }
-.productList li:hover 		{ background-color: rgba(255,255,255,.2); }
-.productList li:active 		{ background-color: rgba(255,255,255,.4); }
+.productList li:hover,
+.searchList li:hover 		{ background-color: rgba(255,255,255,.2); }
+.productList li:active,
+.searchList li:active 		{ background-color: rgba(255,255,255,.4); }
 
 .productList li div,
 .productList li a {
@@ -233,14 +237,14 @@ button:active {
 
 
 
-.searchList {
+/*.searchList {
 	width: 98%;
 	margin: 20px 1%;
 	min-height: 600px;
 	border-radius: 20px;
 	background-color: #fff;
 	overflow: hidden;
-}
+}*/
 
 .searchList li div {
 	height: 30px;
