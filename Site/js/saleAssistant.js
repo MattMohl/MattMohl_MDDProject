@@ -19,6 +19,10 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			controller: 'product',
 			templateUrl: 'views/add-product.html'
 		})
+		.when('/edit/:pname', {
+			conrtoller: 'product',
+			templateUrl: 'views/edit.html'
+		})
 		.otherwise({redirectTo: '/'});
 });
 

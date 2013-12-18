@@ -98,7 +98,7 @@ input.full {
 input.half {
 	border: 0px;
 	height: 100px;
-	width: 50%;
+	width: 49.99%;
 	float: left;
 }
 
@@ -115,6 +115,11 @@ input.text:focus {
 	background-color: rgba(255,255,255, .08);
 	color: #fff;
 	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
+}
+
+input.cent {
+	text-align: center;
+	border-right: 1px solid #000;
 }
 
 input.register,
