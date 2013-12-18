@@ -3,6 +3,9 @@ var saleAssistant = angular.module('saleAssistant', ['ngRoute', 'firebase']);
 saleAssistant.config(function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/', {
+			templateUrl: 'views/landing.html'
+		})
+		.when('/home', {
 			templateUrl: 'views/home.html'
 		})
 		.when('/index.html', {

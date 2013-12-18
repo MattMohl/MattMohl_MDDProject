@@ -2,7 +2,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url('../assets/background.jpg');
+	/*background: url('../assets/background.jpg');*/
+	background-color: #9d2b3e;
 	min-width: 640px;
 	min-height: 960px;
 	font-family: 'Arial', sans-serif;
@@ -12,6 +13,10 @@ body {
 ul {
 	margin: 0;
 	padding: 0;
+}
+
+a {
+	text-decoration: none;
 }
 
 a 			{ color: #fff; }
@@ -90,6 +95,41 @@ input.sign:active 	{background-color: #3a851e;}
 }
 
 
+
+
+h1 {
+	color: #fff;
+	text-align: center;
+	font-weight: normal;
+	font-size: 80px;
+}
+
+.landing-button {
+	transition: background-color .15s;
+	width: 620px;
+	display: block;
+	background-color: #70C251;
+	text-align: center;
+	padding: 20px 0;
+	margin: 80px auto;
+}
+
+.landing-button:active {
+	background-color: #3a851e;
+}
+
+.landing-image {
+	width: 400px;
+	height: 400px;
+	margin: 0 auto;
+	display: block;
+}
+
+
+
+.homeForm {
+	margin: 20px 0;
+}
 
 .form-controls {
 	width: 98%;
