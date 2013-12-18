@@ -6,9 +6,11 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'views/landing.html'
 		})
 		.when('/home', {
+			// controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/index.html', {
+			// controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/list', {
@@ -68,11 +70,22 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 
 	$rootScope.ultimateCheck = function() {
 		if(!$rootScope.user.id) {
-			console.log('hell no bitch');
 			$location.path('/');
 		}
 	};
 }]);
+
+
+// CONTROLLER :: user
+// handles form events
+
+// saleAssistant.controller('user', function($rootScope, $scope) {
+
+// 	$scope.buttonClick = function() {
+// 		console.log();
+// 	};
+
+// });
 
 
 // CONTROLLER :: product

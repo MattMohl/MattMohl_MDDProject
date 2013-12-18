@@ -1,8 +1,8 @@
 <form class="homeForm" name="homeForm">
 
-	<input class="full first text" ng-model="userInfo.email" name="user" type="text" placeholder="Username">
+	<input id="Username" class="full first text" ng-model="userInfo.email" name="user" type="text" placeholder="Username">
 
-	<input class="full text" ng-model="userInfo.password" name="pass" type="text" placeholder="Password">
+	<input id="Password" class="full text" ng-model="userInfo.password" name="pass" type="text" placeholder="Password">
 
 	<div>
 		<input ng-click="auth.$createUser(userInfo.email, userInfo.password)" class="half register button" type="submit" value="Register">
