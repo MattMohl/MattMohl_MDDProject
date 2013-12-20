@@ -213,6 +213,7 @@ button:active {
 	width: 100%;
 	margin: 20px 0;
 	min-height: 600px;
+	border-top: 1px solid #000;
 }
 
 .productList li,
@@ -239,7 +240,7 @@ button:active {
 .productList li div {
 	width: 66%;
 	line-height: 30px;
-	overflow: hidden;
+	text-overflow: clip;
 }
 .productList li a {
 	width: 33%;

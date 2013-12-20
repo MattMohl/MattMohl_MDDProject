@@ -1,9 +1,11 @@
 <form>
 
-	<input class="full text" ng-model="query" name="query" type="text" placeholder="Product Name">
+	<input class="full text" ng-model="query" name="query" type="text" placeholder="Product Name" ng-focus="focus=true" ng-blur="focus=false">
+
+	<p class="tooltip" ng-show="focus" ng-hide="!focus">Enter a product name</p>
 
 	<div>
-		<input ng-click="getProducts(query)" class="register button full" type="submit" value="Search">
+		<input ng-click="search(query)" class="sign button full" type="submit" value="Search">
 	</div>
 
 	<ul class="searchList">

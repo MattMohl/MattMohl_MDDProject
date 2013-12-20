@@ -6,11 +6,9 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			templateUrl: 'views/landing.html'
 		})
 		.when('/home', {
-			// controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/index.html', {
-			// controller: 'user',
 			templateUrl: 'views/home.html'
 		})
 		.when('/list', {
@@ -79,14 +77,6 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 // CONTROLLER :: user
 // handles form events
 
-// saleAssistant.controller('user', function($rootScope, $scope) {
-
-// 	$scope.buttonClick = function() {
-// 		console.log();
-// 	};
-
-// });
-
 
 // CONTROLLER :: product
 // handles CRUD
@@ -101,6 +91,12 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 	// $rootScope.userProducts = filterFilter($rootScope.products, $rootScope.user.id)
 
 	$scope.results = [];
+
+	$scope.search = function($query) {
+		$scope.results = [];
+		console.log('before: ',$scope.results);
+		$scope.getProducts($query);
+	};
 
 	$scope.getProducts = function($query) {
 		$rootScope.query = $query;

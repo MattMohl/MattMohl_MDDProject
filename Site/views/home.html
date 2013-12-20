@@ -9,9 +9,9 @@
 	<p class="tooltip" ng-show="passFocus" ng-hide="!passFocus">Enter you password</p>
 
 	<div>
-		<input ng-click="auth.$createUser(userInfo.email, userInfo.password)" class="half register button" type="submit" value="Register">
-
 		<input ng-click="auth.$login('password', userInfo)" class="half sign button" type="submit" value="Sign In">
+
+		<input ng-click="auth.$createUser(userInfo.email, userInfo.password)" class="half register button" type="submit" value="Register">
 
 		<div style="clear: both"></div>
 	</div>
