@@ -108,6 +108,7 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 			for(var i=0; i<(data.to-data.from)+1; i++) {
 				$scope.results.push(data.products[i]);
 			}
+			console.log($scope.results);
 			$rootScope.pages = [];
 			for (var i=1; i<data.totalPages; i++) {
 				$rootScope.pages.push(i);
@@ -123,9 +124,9 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 		$scope.getProducts($rootScope.query);
 	};
 
-	$scope.addProduct = function($name) {
+	$scope.addProduct = function($name, $sku) {
 		console.log($rootScope.user);
-		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name, 'status':'Watching'});
+		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name, 'status':'Watching', 'sku':$sku});
 		$location.path('/list');
 	};
 
