@@ -1,6 +1,8 @@
 <section>
 
-	<a ng-href="#/search">Add Product +</a>
+	<a href="#" class="menu" ng-click="auth.$logout()">Logout</a>
+
+	<a ng-href="#/search" class="menu sign">Add Product +</a>
 
 	<div style="clear:both;"></div>
 
@@ -10,7 +12,5 @@
 			<div>{{ prod.pname }}</div>
 		</li>
 	</ul>
-
-	<button ng-click="auth.$logout()">Logout</button>
 
 </section>

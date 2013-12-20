@@ -1,5 +1,7 @@
 <form>
 
+	<a class="menu" href="#/list">&lt Back</a>
+
 	<input class="full text" ng-model="query" name="query" type="text" placeholder="Product Name" ng-focus="focus=true" ng-blur="focus=false">
 
 	<p class="tooltip" ng-show="focus" ng-hide="!focus">Enter a product name</p>
@@ -12,7 +14,5 @@
 		<li ng-repeat="res in results" ng-click="addProduct(res.name)"><div>{{ res.name }}</div></li>
 		<li ng-click="nextPage()"><div style="color: #fff;">More Results</div></li>
 	</ul>
-
-	<a href="#/list">Back</a>
 
 </form>

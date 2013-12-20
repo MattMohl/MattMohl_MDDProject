@@ -56,7 +56,7 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 	$rootScope.$on("$firebaseAuth:login", function(e, user) {
 		console.log("User " + user.id + " successfully logged in!");
 		$rootScope.user = user;
-		$location.path('/list');
+		$location.path('/search');
 	});
 
 	// On logout goto -> /

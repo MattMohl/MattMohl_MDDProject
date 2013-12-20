@@ -40,6 +40,20 @@ span {
 	display: block;
 }
 
+.menu {
+	display: block;
+	width: 40%;
+	height: 40px;
+	padding: 40px 2.5%;
+	margin: 0 2.5%;
+	font-size: 36px;
+	float: left;
+}
+
+.menu:nth-child(2) {
+	text-align: right;
+}
+
 
 
 
@@ -136,19 +150,22 @@ input.cent {
 
 input.register,
 .productList li a,
-.form-controls li  			{background-color: rgba(0,0,0,.1); transition: background-color .4s;}
+.form-controls li,
+.menu 			  			{background-color: rgba(0,0,0,.1); transition: background-color .4s;}
 
 input.register:hover,
 .productList li:hover,
-.form-controls li:hover 	{background-color: rgba(255,255,255,.2); transition: background-color .4s;}
+.form-controls li:hover,
+.menu:hover				 	{background-color: rgba(255,255,255,.2); transition: background-color .4s;}
 
 input.register:active,
-.productList li a:active 	{background-color: #797979;}
+.productList li a:active,
+.menu:active			 	{background-color: #797979;}
 
-input.sign 					{background-color: rgba(112,194,81,.7); transition: background-color .4s;}
-input.sign:hover			{background-color: rgba(112,194,81,1);}
+.sign 						{background-color: rgba(112,194,81,.7); transition: background-color .4s;}
+.sign:hover					{background-color: rgba(112,194,81,1);}
 
-input.sign:active,
+.sign:active,
 .form-controls li:active,
 .form-controls li.selected:active 	{background-color: rgba(58,133,30,1);}
 
@@ -262,17 +279,6 @@ button:active {
 	color: #70C251;
 	background-color: #D4FFC2;
 }
-
-
-
-/*.searchList {
-	width: 98%;
-	margin: 20px 1%;
-	min-height: 600px;
-	border-radius: 20px;
-	background-color: #fff;
-	overflow: hidden;
-}*/
 
 .searchList li div {
 	height: 30px;
