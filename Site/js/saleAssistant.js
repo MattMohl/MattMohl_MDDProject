@@ -19,7 +19,7 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			controller: 'product',
 			templateUrl: 'views/add-product.html'
 		})
-		.when('/edit/:pname', {
+		.when('/edit/:sku', {
 			conrtoller: 'product',
 			templateUrl: 'views/edit.html'
 		})
@@ -56,7 +56,7 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 	$rootScope.$on("$firebaseAuth:login", function(e, user) {
 		console.log("User " + user.id + " successfully logged in!");
 		$rootScope.user = user;
-		$location.path('/search');
+		$location.path('/list');
 	});
 
 	// On logout goto -> /
@@ -74,27 +74,24 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 }]);
 
 
-// CONTROLLER :: user
-// handles form events
-
 
 // CONTROLLER :: product
 // handles CRUD
 
-saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase, filterFilter) {
+saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase, $interval) {
 	console.log('controller: product');
 
 	$rootScope.ultimateCheck();
 
 	$rootScope.products = $firebase(new Firebase('https://mdd-project.firebaseio.com/products'));
 
-	// $rootScope.userProducts = filterFilter($rootScope.products, $rootScope.user.id)
+	$rootScope.keys = $scope.products.$getIndex();
+	console.log($rootScope.keys);
 
 	$scope.results = [];
 
 	$scope.search = function($query) {
 		$scope.results = [];
-		console.log('before: ',$scope.results);
 		$scope.getProducts($query);
 	};
 
@@ -102,13 +99,9 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 		$rootScope.query = $query;
 		$http.jsonp( 'http://api.remix.bestbuy.com/v1/products(search='+$rootScope.query+')?page='+$rootScope.page+'&format=json&callback=JSON_CALLBACK&apiKey=kqwq2utctj7tpjur4jgq36k2')
 		.success(function(data, status, headers, config) {
-			// console.log('success: ', data);
-			// console.log(data);
-			// console.log(data.products);
 			for(var i=0; i<(data.to-data.from)+1; i++) {
 				$scope.results.push(data.products[i]);
 			}
-			console.log($scope.results);
 			$rootScope.pages = [];
 			for (var i=1; i<data.totalPages; i++) {
 				$rootScope.pages.push(i);
@@ -128,6 +121,33 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 		console.log($rootScope.user);
 		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name, 'status':'Watching', 'sku':$sku});
 		$location.path('/list');
+	};
+
+	$scope.delete = function($index) {
+		$scope.productList = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
+				
+		$scope.productList.$remove($rootScope.keys[$index]);
+	};
+
+	$scope.checkProduct = function($sku, $index) {
+		$http.jsonp('http://api.remix.bestbuy.com/v1/products/'+$sku+'.json?callback=JSON_CALLBACK&apiKey=kqwq2utctj7tpjur4jgq36k2')
+		.success(function(data, status, headers, config) {
+			console.log(data.onSale);
+			if(data.onSale) {
+				$scope.product = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
+				$scope.product.status = 'Sale';
+				$scope.product.$save('status');
+				$location.path('/list');
+			}else {
+				$scope.product = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
+				$scope.product.status = 'Watching';
+				$scope.product.$save('status');
+				$location.path('/list');
+			}
+		})
+		.error(function(data, status, headers, config) {
+			console.log(data);
+		});
 	};
 
 });

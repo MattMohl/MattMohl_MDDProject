@@ -43,10 +43,10 @@ span {
 .menu {
 	display: block;
 	width: 40%;
-	height: 40px;
+	height: 35px;
 	padding: 40px 2.5%;
 	margin: 0 2.5%;
-	font-size: 36px;
+	font-size: 30px;
 	float: left;
 }
 
@@ -150,23 +150,26 @@ input.cent {
 }
 
 input.register,
-.productList li a,
 .form-controls li,
-.menu 			  			{background-color: rgba(0,0,0,.1); transition: background-color .4s;}
+.menu,
+.refresh		  			{background-color: rgba(0,0,0,.1); transition: background-color .4s;}
 
 input.register:hover,
-.productList li:hover,
 .form-controls li:hover,
-.menu:hover				 	{background-color: rgba(255,255,255,.2); transition: background-color .4s;}
+.menu:hover,
+.refresh:hover			 	{background-color: rgba(255,255,255,.2); transition: background-color .4s;}
 
 input.register:active,
-.productList li a:active,
-.menu:active			 	{background-color: #797979;}
+.menu:active,
+.refresh:active			 	{background-color: #797979;}
 
-.sign 						{background-color: rgba(112,194,81,.7); transition: background-color .4s;}
-.sign:hover					{background-color: rgba(112,194,81,1);}
+.sign,
+.Sale 						{background-color: rgba(112,194,81,.7); transition: background-color .4s;}
+.sign:hover,
+.Sale:hover					{background-color: rgba(112,194,81,1);}
 
 .sign:active,
+.Sale:active,
 .form-controls li:active,
 .form-controls li.selected:active 	{background-color: rgba(58,133,30,1);}
 
@@ -241,10 +244,6 @@ button:active {
 	cursor: default;
 	overflow: hidden;
 }
-.productList li:hover,
-.searchList li:hover 		{ background-color: rgba(255,255,255,.2); }
-.productList li:active,
-.searchList li:active 		{ background-color: rgba(255,255,255,.4); }
 
 .productList li div,
 .productList li a {
@@ -256,30 +255,25 @@ button:active {
 }
 
 .productList li div {
-	width: 66%;
 	line-height: 30px;
 	text-overflow: clip;
 }
+
+.refresh { width: 22%; }
+
+.pname {
+	width: 44%;
+}
+
 .productList li a {
 	width: 33%;
 	text-decoration: none;
 }
 
-.productList li a.Watching {
-	background-color: rgba(255,116,0,.3);
-}
-.productList li a.Sale {
-	background-color: rgba(112,194,81,.7);
-}
+.Watching 			{	background-color: rgba(255,116,0,.3); }
+.Watching:hover		{	background-color: rgba(255,116,0,.45); transition: background-color .4s; }
+.Watching:active	{	background-color: rgba(255,116,0,1); }
 
-.productList li div.Watching {
-	color: #FF7400;
-	background-color: #FFEEC0;
-}
-.productList li div.Sale {
-	color: #70C251;
-	background-color: #D4FFC2;
-}
 
 .searchList li div {
 	height: 30px;

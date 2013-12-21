@@ -8,8 +8,9 @@
 
 	<ul class="productList">
 		<li ng-repeat="prod in products | toArray | filter:{userid: user.id}">
-			<a href="#/edit/{{prod.pname}}" class="{{ prod.status }}">Edit</a>
-			<div>{{ prod.pname }}</div>
+			<a href="#/edit/{{prod.sku}}" class="{{ prod.status }}">{{ prod.status }}</a>
+			<div ng-click="checkProduct(prod.sku, $index)" class="refresh">Sale?</div>
+			<div class="pname">{{ prod.pname }}</div>
 		</li>
 	</ul>
 
