@@ -1,0 +1,22 @@
+<form>
+
+	<a class="menu" ng-href="#/list">&lt Back</a>
+
+	<span ng-click="delete()" class="menu orange">Remove from queue</span>
+
+	<div style="clear:both;"></div>
+
+	<h2>{{ currentProduct.name }} <strong class="{{ currentProduct.cssClass }}">{{ currentProduct.status }}</strong> on Sale</h2>
+
+	<table>
+		<tr>
+			<th>Normal Price</th>
+			<th>Sale Price</th>
+		</tr>
+		<tr>
+			<td>{{ currentProduct.regularPrice }}</td>
+			<td class="{{ currentProduct.cssClass }}">{{ currentProduct.salePrice }}</td>
+		</tr>
+	</table>
+
+</form>

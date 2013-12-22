@@ -2,7 +2,6 @@
 body {
 	margin: 0;
 	padding: 0;
-	/*background: url('../assets/background.jpg');*/
 	background-color: #9d2b3e;
 	min-width: 640px;
 	min-height: 960px;
@@ -12,6 +11,10 @@ body {
 }
 input, button {
 	font-family: 'Varela Round';
+}
+
+input:focus, textarea:focus {
+	outline: 0;
 }
 
 ul {
@@ -27,9 +30,9 @@ a 			{ color: #fff; }
 a:active 	{ color: #eee; }
 a:visited	{ color: #fff; }
 
-h1 {
-	width: 98%;
-	margin: 20px 1%;
+h1, h2, h3 {
+	width: 95%;
+	margin: 20px 2.5%;
 }
 
 li {
@@ -127,17 +130,15 @@ input.text {
 
 input.text:hover {
 	transition: color .2s, background-color .2s;
-	/*background-color: rgba(255,255,255, .08);*/
-	/*box-shadow: 0px 0px 10px 25px rgba(255,255,255,.05) inset;*/
 	color: rgba(255,255,255,.4);
-	background-color: rgba(255,255,255,.05)
+	background-color: rgba(255,255,255,.05);
 }
 
 input.text:focus {
 	transition: background-color .4s, color .6s;
 	background-color: rgba(255,255,255, .15);
 	color: #fff;
-	/*box-shadow: 0 0 8px 8px rgba(112,194,81,.7) inset;*/
+	border: none;
 }
 
 .homeForm input.text:last-child {
@@ -245,6 +246,10 @@ button:active {
 	overflow: hidden;
 }
 
+.searchList li:active {
+	background-color: rgba(255,255,255,.3);
+}
+
 .productList li div,
 .productList li a {
 	height: 30px;
@@ -259,10 +264,8 @@ button:active {
 	text-overflow: clip;
 }
 
-.refresh { width: 22%; }
-
 .pname {
-	width: 44%;
+	width: 66%;
 }
 
 .productList li a {
@@ -270,14 +273,45 @@ button:active {
 	text-decoration: none;
 }
 
-.Watching 			{	background-color: rgba(255,116,0,.3); }
-.Watching:hover		{	background-color: rgba(255,116,0,.45); transition: background-color .4s; }
-.Watching:active	{	background-color: rgba(255,116,0,1); }
+.orange				{	background-color: rgba(255,116,0,.45); transition: background-color .4s; }
+.orange:active		{	background-color: rgba(255,116,0,1); }
 
 
 .searchList li div {
 	height: 30px;
 	padding: 20px 0 0 20px;
+}
+
+
+.onSale {
+	color: rgb(112,194,81);
+}
+.noSale {
+	color: rgb(255,116,0);
+}
+
+table {
+	width: 95%;
+	margin: 0 2.5%;
+}
+
+th, td {
+	padding: 0;
+	margin: 0;
+	height: 70px;
+}
+
+th {
+	font-size: 28px;
+	width: 50%;
+	background-color: rgba(255,255,255,.1);
+}
+
+td {
+	font-size: 24px;
+	width: 50%;
+	background-color: rgba(0,0,0,.1);
+	text-align: center;
 }
 
 

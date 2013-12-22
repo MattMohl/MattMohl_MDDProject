@@ -19,9 +19,9 @@ saleAssistant.config(function($routeProvider, $locationProvider) {
 			controller: 'product',
 			templateUrl: 'views/add-product.html'
 		})
-		.when('/edit/:sku', {
-			conrtoller: 'product',
-			templateUrl: 'views/edit.html'
+		.when('/info/:sku/:keyTerm', {
+			controller: 'productInfo',
+			templateUrl: 'views/info.html'
 		})
 		.otherwise({redirectTo: '/'});
 });
@@ -49,7 +49,7 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 	$rootScope.results = [];
 	$rootScope.products = [];
 
-	var userRef = new Firebase('https://mdd-project.firebaseio.com');
+	var userRef = new Firebase('https://mdd-project2.firebaseio.com');
 	$rootScope.auth = $firebaseAuth(userRef);
 
 	// On login goto -> /list
@@ -69,24 +69,69 @@ saleAssistant.run(['$rootScope', '$firebaseAuth', '$firebase', '$location', func
 	$rootScope.ultimateCheck = function() {
 		if(!$rootScope.user.id) {
 			$location.path('/');
+		}else {
+			console.log('you good');
 		}
 	};
 }]);
 
 
 
+// CONTROLLER :: productInfo
+// handles product info on the info page
+
+saleAssistant.controller('productInfo', function($rootScope, $scope, $http, $routeParams, $firebase, $location) {
+	console.log('controller: productInfo');
+
+	$rootScope.ultimateCheck();
+
+	$scope.currentProduct = {};
+
+	$scope.currentSku = $routeParams.sku;
+	$scope.currentKey = $routeParams.keyTerm;
+
+	console.log($scope.currentSku, $scope.currentKey);
+
+	$http.jsonp('http://api.remix.bestbuy.com/v1/products/'+$scope.currentSku+'.json?callback=JSON_CALLBACK&apiKey=kqwq2utctj7tpjur4jgq36k2')
+	.success(function(data, status, headers, config) {
+		if(data.onSale) {
+			$scope.currentProduct.status = 'is';
+			$scope.currentProduct.cssClass = 'onSale';
+		}else {
+			$scope.currentProduct.status = 'is not';
+			$scope.currentProduct.cssClass = 'noSale';
+		}
+		$scope.currentProduct.name = data.name;
+		$scope.currentProduct.regularPrice = data.regularPrice;
+		$scope.currentProduct.salePrice = data.salePrice;
+	})
+	.error(function(data, status, headers, config) {
+		console.log(data);
+	});
+
+	$scope.delete = function() {
+		console.log('delete',$scope.currentKey);
+
+		$scope.prods = $firebase(new Firebase('https://mdd-project2.firebaseio.com/users/'+$rootScope.user.id+'/products'));
+		console.log($scope.prods);
+		$scope.prods.$remove($scope.currentKey);
+		$location.path('/list');
+	};
+});
+
+
+
 // CONTROLLER :: product
 // handles CRUD
 
-saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase, $interval) {
+saleAssistant.controller('product', function($rootScope, $scope, $http, $firebaseAuth, $location, $firebase) {
 	console.log('controller: product');
 
 	$rootScope.ultimateCheck();
 
-	$rootScope.products = $firebase(new Firebase('https://mdd-project.firebaseio.com/products'));
+	$rootScope.products = $firebase(new Firebase('https://mdd-project2.firebaseio.com/users/'+$rootScope.user.id+'/products'));
 
-	$rootScope.keys = $scope.products.$getIndex();
-	console.log($rootScope.keys);
+	console.log($rootScope.products);
 
 	$scope.results = [];
 
@@ -118,36 +163,8 @@ saleAssistant.controller('product', function($rootScope, $scope, $http, $firebas
 	};
 
 	$scope.addProduct = function($name, $sku) {
-		console.log($rootScope.user);
-		$rootScope.products.$add({'userid':$rootScope.user.id, 'pname':$name, 'status':'Watching', 'sku':$sku});
+		$rootScope.products.$add({'pname':$name, 'sku':$sku});
 		$location.path('/list');
-	};
-
-	$scope.delete = function($index) {
-		$scope.productList = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
-				
-		$scope.productList.$remove($rootScope.keys[$index]);
-	};
-
-	$scope.checkProduct = function($sku, $index) {
-		$http.jsonp('http://api.remix.bestbuy.com/v1/products/'+$sku+'.json?callback=JSON_CALLBACK&apiKey=kqwq2utctj7tpjur4jgq36k2')
-		.success(function(data, status, headers, config) {
-			console.log(data.onSale);
-			if(data.onSale) {
-				$scope.product = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
-				$scope.product.status = 'Sale';
-				$scope.product.$save('status');
-				$location.path('/list');
-			}else {
-				$scope.product = $firebase(new Firebase('https://mdd-project.firebaseio.com/products/'+$rootScope.keys[$index]));
-				$scope.product.status = 'Watching';
-				$scope.product.$save('status');
-				$location.path('/list');
-			}
-		})
-		.error(function(data, status, headers, config) {
-			console.log(data);
-		});
 	};
 
 });

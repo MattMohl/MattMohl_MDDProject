@@ -1,12 +1,12 @@
 <form class="homeForm" name="homeForm">
 
-	<input class="full first text" ng-model="userInfo.email" ng-focus="emailFocus=true" ng-blur="emailFocus=false" name="user" type="text" placeholder="Email">
+	<input class="full first text" ng-model="userInfo.email" ng-focus="emailFocus=true" ng-blur="emailFocus=false" name="user" type="text" placeholder="Email" autocomplete="off">
 
 	<p class="tooltip" ng-show="emailFocus" ng-hide="!emailFocus">Enter your email address</p>
 
-	<input id="Password" class="full text" ng-model="userInfo.password" ng-focus="passFocus=true" ng-blur="passFocus=false" name="pass" type="text" placeholder="Password">
+	<input id="Password" class="full text" ng-model="userInfo.password" ng-focus="passFocus=true" ng-blur="passFocus=false" name="pass" type="text" placeholder="Password" autocomplete="off">
 
-	<p class="tooltip" ng-show="passFocus" ng-hide="!passFocus">Enter you password</p>
+	<p class="tooltip" ng-show="passFocus" ng-hide="!passFocus">Enter your password</p>
 
 	<div>
 		<input ng-click="auth.$login('password', userInfo)" class="half sign button" type="submit" value="Sign In">
