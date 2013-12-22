@@ -179,24 +179,6 @@ input.register:active,
 	float: left;
 }
 
-
-.form-controls {
-	width: 100%;
-	margin-top: 20px;
-}
-
-.form-controls li {
-	height: 30px;
-	padding: 35px 30px;
-}
-
-.form-controls li.selected {
-	transition: background-color .4s;
-	background-color: rgba(112,194,81,.7);
-	list-style-type: url('../assets/checkmark.png');
-	list-style-position: inside;
-}
-
 .tooltip {
 	height: 30px;
 	margin: 0;
