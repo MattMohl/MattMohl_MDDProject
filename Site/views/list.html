@@ -7,10 +7,10 @@
 	<div style="clear:both;"></div>
 
 	<ul class="productList">
-		<li ng-repeat="prod in products | toArray | filter:{userid: user.id}">
-			<a href="#/edit/{{prod.sku}}" class="{{ prod.status }}">{{ prod.status }}</a>
-			<div ng-click="checkProduct(prod.sku, $index)" class="refresh">Sale?</div>
+		<li ng-repeat="prod in products | toArray">
+			<a ng-href="#/info/{{prod.sku}}/{{prod.$key}}" class="orange">More Info</a>
 			<div class="pname">{{ prod.pname }}</div>
+			<div style="display:none;">{{prod.$key}}</div>
 		</li>
 	</ul>
 

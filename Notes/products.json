@@ -1,8 +1,25 @@
 {
-	"products": [
-        {
-            "userid":"1",
-            "pname":"Assassin's Creed Brotherhood - Xbox 360"
-        }
-    ]
+	"users":
+	{
+		"1":
+		{
+			"products":
+			[
+				{
+					"pname":"007 Legends - Xbox 360",
+					"sku":5560568
+				}
+			]
+		},
+		"2":
+		{
+			"products":
+			[
+				{
+					"pname":"007 Legends - Xbox 360",
+					"sku":5560568
+				}
+			]
+		}
+	}
 }
